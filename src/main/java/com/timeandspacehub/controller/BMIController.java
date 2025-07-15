@@ -40,7 +40,7 @@ public class BMIController {
 		return String.format("Your BMI is %.2f - %s", bmi, category);
 		
 	}
-	@GetMapping("/calculate")
+	@GetMapping("/bmi/metric")
 	public ResponseEntity<String> getMetrics(@RequestParam String unitSystem, @RequestParam double meterInput, @RequestParam double kilogramInput ) {
 		double bmi;
 		if ("UK".equalsIgnoreCase(unitSystem)) {
