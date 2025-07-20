@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.timeandspacehub.service.BMIService;
 
 @RestController
@@ -41,13 +42,9 @@ public class BMIController {
 		
 	}
 	@GetMapping("/bmi/metric")
-	public ResponseEntity<String> getMetrics(@RequestParam String unitSystem, @RequestParam double meterInput, @RequestParam double kilogramInput ) {
-		double bmi;
-		if ("UK".equalsIgnoreCase(unitSystem)) {
-			bmi = bmiService.getMetrics(kilogramInput,meterInput);
-		} else {
-			return ResponseEntity.badRequest().body("Invalid unit system. Use 'UK' or 'US'");
-		}
+	public ResponseEntity<String> getMetrics(@RequestParam double meterInput, @RequestParam double kilogramInput ) {
+		double bmi = bmiService.getMetrics(kilogramInput,meterInput);
+		String category = bmiService.getCategory(bmi);
 		return ResponseEntity.ok("Your BMI is: " + bmi + "(" + bmiService.getCategory(bmi) + ")");
 
 	}
