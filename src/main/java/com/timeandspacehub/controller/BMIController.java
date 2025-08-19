@@ -4,13 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.timeandspacehub.service.BMIService;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class BMIController {
 	@Autowired
@@ -57,6 +60,8 @@ public class BMIController {
 
 	    return ResponseEntity.ok(response);
 	}
+	
+	
 
 
 }
