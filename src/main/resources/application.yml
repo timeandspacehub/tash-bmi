@@ -1,0 +1,20 @@
+server:
+  port: 8083
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/DEMO/v2.0
+        registration:
+          azure-dev:
+             provider: azure
+             client-id: DEMO
+             client-secret: DEMO
+             scope:
+              - openid
+              - email
+              - profile
+
